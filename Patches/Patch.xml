@@ -1,0 +1,8 @@
+<Patch>
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/RecipeDef[defName="ButcherCorpseFlesh"]</xpath>
+        <value>
+            <li Class="SizeButcher.SizeAffectsWorkSpeed"/>
+        </value>
+    </Operation>
+</Patch>
