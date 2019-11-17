@@ -80,12 +80,11 @@ namespace SizeButcher
                 static float GetWorkSizeFactor(Job job)
                 {
                     float speed = 1f;
-                    var corpse = job.targetB.Thing as Corpse;
-                    var size = corpse?.InnerPawn?.BodySize;
-                    bool is_affected = job.RecipeDef.HasModExtension<SizeAffectsWorkSpeed>();
-                    if (is_affected)
+                    if (job.RecipeDef.HasModExtension<SizeAffectsWorkSpeed>())
                     {
-                        speed = 1f / size ?? 1f;
+                        var corpse = job.targetB.Thing as Corpse;
+                        float size = UnityEngine.Mathf.Clamp(corpse?.InnerPawn?.BodySize ?? 1f, 0.25f, 4f);
+                        speed = 1f / size;
                     }
                     return speed;
                 }
